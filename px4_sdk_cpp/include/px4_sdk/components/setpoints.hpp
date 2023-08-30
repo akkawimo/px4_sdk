@@ -49,8 +49,8 @@ public:
 
   SetpointConfigurationResult configureSetpointsSync(const SetpointConfiguration & config);
 
-  void sendTrajectorySetpoint(px4_msgs::msg::TrajectorySetpoint &traj_sp);
-  
+  void sendTrajectorySetpoint(const Eigen::Vector3f & velocity);
+
   // TODO: goto, stop, ...
 
 private:

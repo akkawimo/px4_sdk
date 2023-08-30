@@ -48,22 +48,22 @@ SetpointSender::SetpointConfigurationResult SetpointSender::configureSetpointsSy
   return SetpointConfigurationResult::Success;
 }
 
-void SetpointSender::sendTrajectorySetpoint(px4_msgs::msg::TrajectorySetpoint &traj_sp)
+void SetpointSender::sendTrajectorySetpoint(const Eigen::Vector3f & velocity)
 {
-	// TODO: check if configured setpoints match
+  // TODO: check if configured setpoints match
 
-	// TODO: add mode id to setpoint
-	RCLCPP_DEBUG(_node.get_logger(), "traj pos %f, %f, %f", traj_sp.position[0], traj_sp.position[1], traj_sp.position[2]);
-	RCLCPP_DEBUG(_node.get_logger(), "traj vel %f, %f, %f", traj_sp.velocity[0], traj_sp.velocity[1], traj_sp.velocity[2]);
-	RCLCPP_DEBUG(_node.get_logger(), "traj acc %f, %f, %f", traj_sp.acceleration[0], traj_sp.acceleration[1], traj_sp.acceleration[2]);
-	RCLCPP_DEBUG(_node.get_logger(), "traj jerk %f, %f, %f", traj_sp.jerk[0], traj_sp.jerk[1], traj_sp.jerk[2]);
+  // TODO: add mode id to setpoint
 
-
-	traj_sp.yaw = NAN;
-	traj_sp.yawspeed = NAN;
-	traj_sp.timestamp = _node.get_clock()->now().nanoseconds() / 1000;
-	_trajectory_setpoint_pub->publish(traj_sp);
-
+  px4_msgs::msg::TrajectorySetpoint sp{};
+  sp.yaw = NAN;
+  sp.yawspeed = NAN;
+  sp.position[0] = sp.position[1] = sp.position[2] = NAN;       // TODO ...
+  sp.acceleration[0] = sp.acceleration[1] = sp.acceleration[2] = NAN;
+  sp.velocity[0] = velocity(0);
+  sp.velocity[1] = velocity(1);
+  sp.velocity[2] = velocity(2);
+  sp.timestamp = _node.get_clock()->now().nanoseconds() / 1000;
+  _trajectory_setpoint_pub->publish(sp);
 }
 
 } // namespace px4_sdk
