@@ -72,7 +72,7 @@ public:
 
     // Send some random setpoints, make sure it stays in the air, we don't want it to land
     const Eigen::Vector3f velocity{1.F, 0.F, -0.5F};
-    setpoints().sendTrajectorySetpoint(velocity);
+    //setpoints().sendTrajectorySetpoint(velocity);
   }
 
   int num_activations{0};

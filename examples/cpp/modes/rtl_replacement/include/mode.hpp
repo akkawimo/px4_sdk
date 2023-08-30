@@ -48,7 +48,7 @@ public:
     }
 
     const Eigen::Vector3f velocity{0.F, 1.F, 5.F};
-    setpoints().sendTrajectorySetpoint(velocity);
+    //setpoints().sendTrajectorySetpoint(velocity);
   }
 
 private:

@@ -35,7 +35,7 @@
 
 #include <cmath>
 #include "VelocitySmoothing.hpp"
-#include "px4_sdk/components/setpoints.h"
+#include "px4_sdk/components/setpoints.hpp"
 #include "px4_sdk/mathlib/mathlib.h"
 
 #include <Eigen/Core>
