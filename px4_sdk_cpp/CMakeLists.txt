@@ -31,7 +31,6 @@ set(HEADER_FILES
         include/px4_sdk/components/overrides.hpp
         include/px4_sdk/components/setpoints.hpp
         include/px4_sdk/components/wait_for_fmu.hpp
-        include/px4_sdk/mission_planning/mission_planner.hpp
         include/px4_sdk/motion_planning/PositionSmoothing.hpp
         include/px4_sdk/motion_planning/VelocitySmoothing.hpp
         include/px4_sdk/motion_planning/TrajectoryConstraints.hpp
