@@ -19,6 +19,8 @@ find_package(px4_msgs REQUIRED)
 find_package(eigen3_cmake_module REQUIRED)
 find_package(Eigen3 REQUIRED)
 
+file(GLOB_RECURSE MATHLIB_HEADERS "include/px4_sdk/mathlib/**/*.h" "include/px4_sdk/mathlib/**/*.hpp")
+
 include_directories(include SYSTEM ${Eigen3_INCLUDE_DIRS})
 set(HEADER_FILES
         include/px4_sdk/components/events.hpp
@@ -29,6 +31,11 @@ set(HEADER_FILES
         include/px4_sdk/components/overrides.hpp
         include/px4_sdk/components/setpoints.hpp
         include/px4_sdk/components/wait_for_fmu.hpp
+        include/px4_sdk/mission_planning/mission_planner.hpp
+        include/px4_sdk/motion_planning/PositionSmoothing.hpp
+        include/px4_sdk/motion_planning/VelocitySmoothing.hpp
+        include/px4_sdk/motion_planning/TrajectoryConstraints.hpp
+        ${MATHLIB_HEADERS}
 )
 
 add_library(px4_sdk_cpp
@@ -40,6 +47,8 @@ add_library(px4_sdk_cpp
         src/components/registration.cpp
         src/components/setpoints.cpp
         src/components/wait_for_fmu.cpp
+        src/motion_planning/PositionSmoothing.cpp
+        src/motion_planning/VelocitySmoothing.cpp
         ${HEADER_FILES}
 )
 ament_target_dependencies(px4_sdk_cpp ament_index_cpp Eigen3 rclcpp px4_msgs)
